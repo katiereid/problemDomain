@@ -1,0 +1,58 @@
+<script>
+function Cat(personality, cuteness) {
+  this.personality = personality;
+  this.cuteness = cuteness;
+}
+
+Cat.prototype.describe = function () {
+  console.log("I am a wonderful cat with a ",
+    this.personality, "personality, and I'm", this.cuteness, 
+    "cute. Adopt me!");
+}
+
+function adoptableCats() {
+  this.Cats = [];
+}
+
+adoptableCats.prototype.addCat = function(personality, cuteness) {
+  this.Cats.push(new Cat(personality, cuteness));
+}
+adoptableCats.prototype.describeCats = function () {
+  for(var i = 0; i < this.Cats.length; i++) {
+    this.Cats[i].describe(); 
+  }
+}
+
+var adoptableCats = new adoptableCats();
+adoptableCats.addCat("playful", "very");
+adoptableCats.addCat("scratchy", "extra");
+adoptableCats.describeCats();
+
+function Adopter(personalityPreference, cutenessPreference) {
+  this.personalityPreference = personalityPreference;
+  this.cutenessPreference = cutenessPreference;
+}
+
+adoptableCats.prototype.recommend = function(adopter) {
+  var suggestions = [];
+  var currentCat;
+  for(var i=0; i<this.Cats.length; i++) {
+    currentCat = this.Cats[i];
+    if(adopter.personalityPreference === currentCat.personality){
+      suggestions.push(currentCat.cuteness);
+    }
+  }
+  return suggestions;
+}
+
+function Staff(numPeopleWorking) {
+  this.numPeopleWorking = numPeopleWorking;
+}
+
+function Shelter(distance, catAmount) {
+  this.distance = distance;
+  this.catAmount= catAmount
+}
+
+
+</script>
