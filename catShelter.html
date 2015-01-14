@@ -1,0 +1,107 @@
+<script>
+// function Cat(personality, cuteness) {
+//   this.personality = personality;
+//   this.cuteness = cuteness;
+// }
+
+// Cat.prototype.describe = function () {
+//   console.log("I am a wonderful cat with a ",
+//     this.personality, "personality, and I'm", this.cuteness, 
+//     "cute. Adopt me!");
+// }
+
+// function adoptableCats() {
+//   this.Cats = [];
+// }
+
+// adoptableCats.prototype.addCat = function(personality, cuteness) {
+//   this.Cats.push(new Cat(personality, cuteness));
+// }
+// adoptableCats.prototype.describeCats = function () {
+//   for(var i = 0; i < this.Cats.length; i++) {
+//     this.Cats[i].describe(); 
+//   }
+// }
+
+// var adoptableCats = new adoptableCats();
+// adoptableCats.addCat("playful", "very");
+// adoptableCats.addCat("scratchy", "extra");
+// adoptableCats.describeCats();
+
+function Adopter(personalityPreference, cutenessPreference, distPreference, catAmountPref) {
+  this.personalityPreference = personalityPreference;
+  this.cutenessPreference = cutenessPreference;
+  this.distPreference = distPreference;
+  this.catAmountPref = catAmountPref;
+}
+
+// adoptableCats.prototype.recommend = function(Adopter) {
+//   var suggestions = [];
+//   var currentCat;
+//   for(var i=0; i<this.Cats.length; i++) {
+//     currentCat = this.Cats[i];
+//     if(adopter.personalityPreference === currentCat.personality){
+//       suggestions.push(currentCat.cuteness);
+//     }
+//   }
+//   return suggestions;
+// }
+
+// function Staff(numPeopleWorking) {
+//   this.numPeopleWorking = numPeopleWorking;
+// }
+
+// function numStaff() {
+//   this.Staff = [];
+// }
+
+// workingStaff.prototype.addStaff = function(numPeopleWorking) {
+//   this.Staff.push(new Staff(numPeopleWorking));
+// }
+
+function Shelter(distance, catAmount) {
+  this.distance = distance;
+  this.catAmount= catAmount;
+}
+
+Shelter.prototype.describe = function () {
+  console.log("This shelter is a distance of",
+    this.distance, "away from you, and has", this.catAmount, 
+    "available for adoption.");
+}
+
+
+function Shelter() {
+  this.shelters = [];
+}
+
+Shelter.prototype.addShelter = function(distance, catAmount) {
+  this.shelters.push(new Shelter(distance, catAmount));
+}
+
+Shelter.prototype.describeShelters = function () {
+  for(var i = 0; i < this.shelters.length; i++) {
+    this.shelters[i].describe(); 
+  }
+}
+
+var shelter = new Shelter()
+shelter.addShelter("10 miles", "40 cats");
+shelter.addShelter("19 miles", "16 cats");
+shelter.describeShelters();
+
+
+
+Shelter.prototype.recommend = function(adopter) {
+  var suggestions = [];
+  var currentShelter;
+  for(var i=0; i<this.shelters.length; i++) {
+    currentShelter = this.shelters[i];
+    if(adopter.distPreference === currentShelter.distance){
+      suggestions.push(currentShelter.catAmount);
+    }
+  }
+  return suggestions;
+}
+
+</script>
