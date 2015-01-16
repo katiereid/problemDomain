@@ -37,9 +37,11 @@ function Shelter(location, distance, catAmount) {
   this.distance = distance;
   this.catAmount= catAmount;
 }
+
 function allShelters() {
   this.shelters = [];
 }
+
 allShelters.prototype.addShelter = function(location, distance, catAmount) {
   this.shelters.push(new Shelter(location, distance, catAmount));
 }
@@ -47,13 +49,21 @@ var allShelters = new allShelters();
 allShelters.addShelter("Shoreline", 10, "40 cats");
 allShelters.addShelter("Bellevue", 19, "16 cats");
 
+function showShelters() {
+  var printShelters = document.getElementById("shelterOutput");
+  printShelters.innerHTML = showAllShelters;
+  document.body.appendChild(printShelters);
+
+var shelterSubmit =document.getElementById("shelterSubmit");
+shelterSubmit.addEventListener('click', showShelters, false);
+
 function Cat(personality, cuteness) {
   this.personality = personality
   this.cuteness = cuteness  
 }
 
 function allCats() {
-  this.cats = []
+  this.cats = [];
 }
 
 Shelter.prototype.addCat = function(personality, cuteness) {
@@ -68,13 +78,7 @@ allCats.addCat("curious", "mediocrely");
 allCats.addCat("bossy", "handsomely");
 allCats.addCat("cuddly", "very");
 
-// allShelters.prototype.describeShelters = function () {
-//   for(var i = 0; i < this.shelters.length; i++) {
-//     this.shelters[i].describe(); 
-//   }
-// }
 
-console.log(allCats)
 // function Adopter(distPreference) {
 //   // this.personalityPreference = personalityPreference;
 //   // this.cutenessPreference = cutenessPreference;
