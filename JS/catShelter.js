@@ -37,7 +37,8 @@ var Bellevue = new Shelter("Bellevue", 19, this.cats);
 Shoreline.addCat(Grumpy);
 Bellevue.addCat(Sassy);
 Bellevue.addCat(Kitty);
-Bellevue.addCat(Grumpy);
+Bellevue.addCat(Frito);
+
 
 console.log(Bellevue.cats);
 console.log(Shoreline.cats);
@@ -59,42 +60,35 @@ function submitIt() {
   
   var list           = document.getElementById('resultsOutput');
   var newItemLast    = document.createElement('li');
-  
   var counter = 0;
-  var catFunction = function (e) {
-        var currentCat = currentShelter.cats[e];
-        console.log("current cat age " + currentCat.age);
-        var catDescribe = "I am a wonderful cat named " + currentCat.name + " with a " + currentCat.personality + " personality, and I'm " + currentCat.cuteness + " cute and I'm " + currentCat.age + " years old. Adopt me!";
-        var newTextLast;    
-        console.log("userPersPref " + userPersPref);
-        console.log("current cat pers " + currentCat.personality);
-        console.log("user age pref" + userAgePref);
-        if ((userPersPref === currentCat.personality) && (userAgePref >= currentCat.age)) {
-          console.log("im inside the if ");
-          console.log(currentCat.name);
-          console.log(catDescribe);
-          newTextLast = document.createTextNode(catDescribe);
-           newItemLast.appendChild(newTextLast);
-          list.appendChild(newItemLast);
-        } else if (counter === 0) {
-            alert("I'm sorry, no cats match your preferences at this time. Please check back soon!");
-          }
-        };
 
-    for(var i=0; i<shelters.length; i++) {
+  for(var i=0; i<shelters.length; i++) {
     var currentShelter = shelters[i]; 
-    console.log(userDistPref + currentShelter.distance);
+    
     if (userDistPref >= currentShelter.distance) {
-        console.log("hello");
-      for(var e = 0; e < currentShelter.cats.length; e++) {
-        catFunction();
-        
+    
+    for(var e = 0; e < currentShelter.cats.length; e++) {
+      var currentCat = currentShelter.cats[e];
+      var catDescribe = "I am a wonderful cat named " + currentCat.name + " with a " + currentCat.personality + " personality, and I'm " + currentCat.cuteness + " cute and I'm " + currentCat.age + " years old. Adopt me!";
+      var newTextLast;    
+      console.log("userPersPref " + userPersPref);
+      console.log("current cat pers " + currentCat.personality);
+      console.log("user age pref" + userAgePref);
+      if ((userPersPref === currentCat.personality) && (userAgePref >= currentCat.age)) {
+        console.log("im inside the if ");
+        console.log(currentCat.name);
+        console.log(catDescribe);
+        newTextLast = document.createTextNode(catDescribe);
+        newItemLast.appendChild(newTextLast);
+        list.appendChild(newItemLast);
+      } else {
+          alert("I'm sorry, no cats match your preferences at this time. Please check back soon!");
       }
-    } else {
-        alert("I'm sorry, no shelters are in your area!");
-      }
+    }
+  }
   }
 }
+
    
    
   
