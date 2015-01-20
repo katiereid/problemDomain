@@ -8,10 +8,11 @@ h1 {
   padding: 80px;
 }
 
-
 body {
   font-size:120%;
+  font-family:'Droid Serif', serif;
   background-color:#EBE0CC;
   border: 0px solid #665544;
-  padding: 80px;}
-} 
+  padding: 80px;
+  text-indent:50px;
+}
