@@ -30,25 +30,20 @@ Shelter.prototype.addCat = function(cat) {
   this.cats.push(cat);
 }
 
-
 var Shoreline = new Shelter("Shoreline", 10, this.cats);
 var Bellevue = new Shelter("Bellevue", 19, this.cats);
 
-Shoreline.addCat(Grumpy);
 Bellevue.addCat(Sassy);
 Bellevue.addCat(Kitty);
 Bellevue.addCat(Frito);
-
-
-console.log(Bellevue.cats);
-console.log(Shoreline.cats);
+Bellevue.addCat(George);
+Shoreline.addCat(Grumpy);
+Shoreline.addCat(Jasper);
+Shoreline.addCat(Toby);
 
 var shelters = [];
 shelters.push(Shoreline);
 shelters.push(Bellevue);
-
-
-console.log(shelters);
 
 function submitIt() {
   inputArray = []
@@ -67,31 +62,22 @@ function submitIt() {
     
     if (userDistPref >= currentShelter.distance) {
     
-    for(var e = 0; e < currentShelter.cats.length; e++) {
-      var currentCat = currentShelter.cats[e];
-      var catDescribe = "I am a wonderful cat named " + currentCat.name + " with a " + currentCat.personality + " personality, and I'm " + currentCat.cuteness + " cute and I'm " + currentCat.age + " years old. Adopt me!";
-      var newTextLast;    
-      console.log("userPersPref " + userPersPref);
-      console.log("current cat pers " + currentCat.personality);
-      console.log("user age pref" + userAgePref);
-      if ((userPersPref === currentCat.personality) && (userAgePref >= currentCat.age)) {
-        console.log("im inside the if ");
-        console.log(currentCat.name);
-        console.log(catDescribe);
-        newTextLast = document.createTextNode(catDescribe);
-        newItemLast.appendChild(newTextLast);
-        list.appendChild(newItemLast);
-      } else {
-          alert("I'm sorry, no cats match your preferences at this time. Please check back soon!");
+      for(var e = 0; e < currentShelter.cats.length; e++) {
+        var currentCat = currentShelter.cats[e];
+        var catDescribe = "There is a wonderful cat named " + currentCat.name + " with a " + currentCat.personality + " personality, and who is " + currentCat.cuteness + " cute and " + currentCat.age + " years old. Adopt me!";
+        var newTextLast;    
+        if ((userPersPref === currentCat.personality) && (userAgePref >= currentCat.age)) {
+          newTextLast = document.createTextNode(catDescribe);
+          newItemLast.appendChild(newTextLast);
+          list.appendChild(newItemLast);
+        } 
       }
+    } else {
+      alert("Sorry! No matches at this time, try again soon!");
     }
-  }
   }
 }
 
-   
-   
-  
 var elSubmit = document.getElementById("submitButtonClick");
 elSubmit.addEventListener("click", submitIt, false);
 
