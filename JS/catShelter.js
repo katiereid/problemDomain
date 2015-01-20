@@ -4,42 +4,50 @@ function Adopter(distPreference, personalityPreference, agePreference) {
   this.agePreference=agePreference;
 }
 
+function Cat(name, personality, cuteness, age) {
+this.name = name;  
+this.personality = personality;
+this.cuteness = cuteness; 
+this.age = age;    
+}
+
+var Grumpy = new Cat("Grumpy", "happy", "super", 2);
+var Sassy = new Cat("Sassy", "happy", "super", 2);
+var Kitty = new Cat("Kitty", "playful", "a little", 1);
+var Frito = new Cat("Frito", "scratchy", "extra", 6);
+var Toby = new Cat("Toby","curious", "mediocrely", 5);
+var Jasper = new Cat("Jasper", "bossy", "handsomely", 7);
+var George = new Cat("George", "cuddly", "very", 4);
+
 function Shelter(location, distance, cats) {
   this.location= location;
   this.distance = distance;
   this.cats = [];
-}    
+}  
+ 
 
-function Cat(personality, cuteness, age) {
-this.personality = personality;
-this.cuteness = cuteness; 
-this.age = age;
-
-Shelter.prototype.addCat = function(personality, cuteness, age) {
-this.cats.push(new Cat(personality, cuteness, age));
-}
-    
-var allCats = new allCats();
-allCats.addCat("happy", "super", 2);
-allCats.addCat("playful", "a little", 1);
-allCats.addCat("scratchy", "extra", 6);
-allCats.addCat("curious", "mediocrely", 5);
-allCats.addCat("bossy", "handsomely", 7);
-allCats.addCat("cuddly", "very", 4);
+Shelter.prototype.addCat = function(cat) {
+  this.cats.push(cat);
 }
 
 
-function allShelters() {
-  this.shelters = [];
-}
+var Shoreline = new Shelter("Shoreline", 10, this.cats);
+var Bellevue = new Shelter("Bellevue", 19, this.cats);
 
-allShelters.prototype.addShelter = function(location, distance, cats) {
-  this.shelters.push(new Shelter(location, distance, cats));
-}
+Shoreline.addCat(Grumpy);
+Bellevue.addCat(Sassy);
+Bellevue.addCat(Kitty);
+Bellevue.addCat(Grumpy);
 
-var allShelters = new allShelters();
-allShelters.addShelter("Shoreline", 10, this.cats);
-allShelters.addShelter("Bellevue", 19, this.cats);
+console.log(Bellevue.cats);
+console.log(Shoreline.cats);
+
+var shelters = [];
+shelters.push(Shoreline);
+shelters.push(Bellevue);
+
+
+console.log(shelters);
 
 function submitIt() {
   inputArray = []
@@ -49,26 +57,47 @@ function submitIt() {
 
   inputArray = [userDistPref, userPersPref, userAgePref];
   
-  for(var i=0; i<Shelter.length; i++) {
-    var catDescribe = ("I am a wonderful cat with a " + this.personality + " personality, and I'm " + this.cuteness + 
-    " cute and I'm " + this.age + " years old. Adopt me!");
-    var list           = document.getElementById('resultsOutput');
-    var newItemLast    = document.createElement('li');
-    var newTextLast    = document.createTextNode(catDescribe);
-    newItemLast.appendChild(newTextLast);
-    list.appendChild(newItemLast);
-    var suggestions = [];
-    var currentCat = this.cats[i];
-    currentShelter = this.Shelter[i];
-    if(userPersPref === currentCat.personality && userDistPref<= currentShelter.distance && userAgePref === currentCat.age)
-    {
-      suggestions.push(currentCat.catDescribe);
-      }else {
-        return("I'm sorry, no cats match your preferences at this time. Please check back soon!");
-      }
-    }
-  }
+  var list           = document.getElementById('resultsOutput');
+  var newItemLast    = document.createElement('li');
+  
+  var counter = 0;
+  var catFunction = function (e) {
+        var currentCat = currentShelter.cats[e];
+        console.log("current cat age " + currentCat.age);
+        var catDescribe = "I am a wonderful cat named " + currentCat.name + " with a " + currentCat.personality + " personality, and I'm " + currentCat.cuteness + " cute and I'm " + currentCat.age + " years old. Adopt me!";
+        var newTextLast;    
+        console.log("userPersPref " + userPersPref);
+        console.log("current cat pers " + currentCat.personality);
+        console.log("user age pref" + userAgePref);
+        if ((userPersPref === currentCat.personality) && (userAgePref >= currentCat.age)) {
+          console.log("im inside the if ");
+          console.log(currentCat.name);
+          console.log(catDescribe);
+          newTextLast = document.createTextNode(catDescribe);
+           newItemLast.appendChild(newTextLast);
+          list.appendChild(newItemLast);
+        } else if (counter === 0) {
+            alert("I'm sorry, no cats match your preferences at this time. Please check back soon!");
+          }
+        };
 
+    for(var i=0; i<shelters.length; i++) {
+    var currentShelter = shelters[i]; 
+    console.log(userDistPref + currentShelter.distance);
+    if (userDistPref >= currentShelter.distance) {
+        console.log("hello");
+      for(var e = 0; e < currentShelter.cats.length; e++) {
+        catFunction();
+        
+      }
+    } else {
+        alert("I'm sorry, no shelters are in your area!");
+      }
+  }
+}
+   
+   
+  
 var elSubmit = document.getElementById("submitButtonClick");
 elSubmit.addEventListener("click", submitIt, false);
 
