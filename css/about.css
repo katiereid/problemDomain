@@ -1,0 +1,17 @@
+
+h1 {
+  font-family: 'Crafty Girls', cursive;
+  font-size:220%;
+  text-align:center;
+  border: 2px solid #665544;
+  background-color: #F0E9E9;
+  padding: 80px;
+}
+
+
+body {
+  font-size:120%;
+  background-color:#EBE0CC;
+  border: 0px solid #665544;
+  padding: 80px;}
+} 

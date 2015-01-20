@@ -3,17 +3,25 @@ h1 {
   text-align:center;
   font-size:250%;
   font-family: 'Crafty Girls', cursive;
+  border: 1px solid #665544;
+  background-color: #efefef;
+  padding: inherit;
 }
 
 h2 {
   font-style:bold;
   text-align:center;
   text-transform:lowercase;
-  font-style:italic;
+  font-family: 'Crafty Girls';
 }
 
 body {
   text-align:center;
   margin-top: 200px;
   background-color:#D4BFA8;
+  .select {
+      border: 1px solid #665544;
+      background-color: #efefef;
+      padding: inherit;}
+  }
 }
