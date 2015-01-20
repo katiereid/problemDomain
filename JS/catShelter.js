@@ -53,8 +53,6 @@ function submitIt() {
 
   inputArray = [userDistPref, userPersPref, userAgePref];
   
-  var list           = document.getElementById('resultsOutput');
-  var newItemLast    = document.createElement('li');
   var counter = 0;
 
   for(var i=0; i<shelters.length; i++) {
@@ -64,13 +62,17 @@ function submitIt() {
     
       for(var e = 0; e < currentShelter.cats.length; e++) {
         var currentCat = currentShelter.cats[e];
-        var catDescribe = "There is a wonderful cat named " + currentCat.name + " with a " + currentCat.personality + " personality, and who is " + currentCat.cuteness + " cute and " + currentCat.age + " years old. Adopt me!";
+        var catDescribe = "There is a wonderful cat named " + currentCat.name + " with a " + currentCat.personality + " personality near you, who is " + currentCat.cuteness + " cute and " + currentCat.age + " years old. " + currentCat.name + " would love to meet you!";
         var newTextLast;    
         if ((userPersPref === currentCat.personality) && (userAgePref >= currentCat.age)) {
-          newTextLast = document.createTextNode(catDescribe);
+          var list           = document.getElementById('resultsOutput');
+          var newItemLast    = document.createElement('li');
+          newTextLast = document.createTextNode(catDescribe); 
           newItemLast.appendChild(newTextLast);
           list.appendChild(newItemLast);
-        } 
+          var position = document.getElementsByTagName('ul')[0];
+          position.appendChild(newEl);
+        }
       }
     } else {
       alert("Sorry! No matches at this time, try again soon!");

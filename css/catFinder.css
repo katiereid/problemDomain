@@ -20,9 +20,8 @@ body {
   text-align:center;
   margin-top: 200px;
   background-color:#D4BFA8;
-  .select {
-      border: 1px solid #665544;
-      background-color: #efefef;
-      padding: inherit;}
   }
+
+span {
+  display:block;
 }
