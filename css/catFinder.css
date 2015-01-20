@@ -1,7 +1,7 @@
 h1 {
   font-style:bold;
   text-align:center;
-  font-size:250%;
+  font-size:275%;
   font-family: 'Crafty Girls', cursive;
   border: 1px solid #665544;
   background-color: #efefef;
@@ -16,6 +16,7 @@ h2 {
 }
 
 body {
+  font-family: 'Droid Serif', serif;
   text-align:center;
   margin-top: 200px;
   background-color:#D4BFA8;
